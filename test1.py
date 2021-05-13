@@ -40,6 +40,8 @@ class test1(minqlx.Plugin):
         self.updateAvailable = changed
         if self.updateAvailable:
             minqlx.CHAT_CHANNEL.reply("test1: New update available.")
+        else:
+            minqlx.CHAT_CHANNEL.reply("test1: Plugin is up to date.")
         return
     
     @minqlx.thread
