@@ -32,10 +32,10 @@ class test1(minqlx.Plugin):
         
     @minqlx.thread
     def getUpdate(self):
-        os.system("mkdir " + self.plugindir + "\\.temp\\")
-        os.system("wget " + self.updateUrl + " -P " + self.plugindir + "\\.temp\\")
-        changed = filecmp.cmp(self.plugindir + "\\test1.py",
-                              self.plugindir + "\\.temp\\" + "test1.py",
+        os.system("mkdir " + self.plugindir + "/.temp/")
+        os.system("wget " + self.updateUrl + " -P " + self.plugindir + "/.temp/")
+        changed = filecmp.cmp(self.plugindir + "/test1.py",
+                              self.plugindir + "/.temp/" + "test1.py",
                               shallow = False)
         self.updateAvailable = changed
         minqlx.CHAT_CHANNEL.reply("Test1: New update available.")
@@ -43,8 +43,8 @@ class test1(minqlx.Plugin):
     
     @minqlx.thread
     def _rewriteSelf(self):
-        os.system("mv " + self.plugindir + "\\.temp\\" + "test1.py" + " " + self.plugindir)
-        os.system("rm -rf " + self.plugindir + "\\.temp\\")
+        os.system("mv " + self.plugindir + "/.temp/" + "test1.py" + " " + self.plugindir)
+        os.system("rm -rf " + self.plugindir + "/.temp/")
         self.updateAvailable = False
         minqlx.CHAT_CHANNEL.reply("Test1: Plugin has been successfully updated.")
         minqlx.reload_plugin("test1")
