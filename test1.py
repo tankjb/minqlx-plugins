@@ -20,13 +20,13 @@ class test1(minqlx.Plugin):
         
     def _checkUpdate(self, *args, **kwargs):
         if self.updateAvailable == True:
-            self._reloadSelf()
+            self._rewriteSelf()
             return
         self.getUpdate()
         
     def _manuallyCheckUpdate(self, player, msg, channel):       
         if self.updateAvailable == True:
-            self._reloadSelf()
+            self._rewriteSelf()
             return
         self.getUpdate()    
         
