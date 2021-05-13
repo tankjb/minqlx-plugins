@@ -1,6 +1,10 @@
 import minqlx
 import builtins
 import random
+import os
+import sys
+import filecmp
+
 
 class debug(minqlx.Plugin):
     
