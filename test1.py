@@ -42,6 +42,7 @@ class test1(minqlx.Plugin):
             minqlx.CHAT_CHANNEL.reply("test1: New update available.")
         else:
             minqlx.CHAT_CHANNEL.reply("test1: Plugin is up to date.")
+            os.system("rm -rf " + self.plugindir + "/.temp/")
         return
     
     @minqlx.thread
