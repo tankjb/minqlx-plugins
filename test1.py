@@ -1,3 +1,6 @@
+# author: tankjb
+# autoupdate test plugin for minqlx
+
 import minqlx
 import os
 import filecmp
@@ -11,6 +14,7 @@ class test1(minqlx.Plugin):
         self.updateAvailable = False
         self.add_command("reloadtest", self._reloadtest)
         self.add_hook("game_start", self._checkUpdate)
+        self.add_hook("game_end", self._checkUpdate)
         self.add_command("checkupdate", self._manuallyCheckUpdate)
     
     def _reloadtest(self, player, msg, channel):
@@ -33,7 +37,7 @@ class test1(minqlx.Plugin):
     @minqlx.thread
     def getUpdate(self):
         os.system("mkdir " + self.plugindir + "/.temp/")
-        os.system("wget " + self.updateUrl + " -P " + self.plugindir + "/.temp/")
+        os.system("wget " + self.updateUrl + " -O -P " + self.plugindir + "/.temp/")
         changed = filecmp.cmp(self.plugindir + "/test1.py",
                               self.plugindir + "/.temp/" + "test1.py",
                               shallow = False)
