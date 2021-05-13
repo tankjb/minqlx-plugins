@@ -37,7 +37,7 @@ class test1(minqlx.Plugin):
         changed = filecmp.cmp(self.plugindir + "/test1.py",
                               self.plugindir + "/.temp/" + "test1.py",
                               shallow = False)
-        self.updateAvailable = changed
+        self.updateAvailable = not changed
         if self.updateAvailable:
             minqlx.CHAT_CHANNEL.reply("test1: New update available.")
         else:
