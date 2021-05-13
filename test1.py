@@ -38,7 +38,8 @@ class test1(minqlx.Plugin):
                               self.plugindir + "/.temp/" + "test1.py",
                               shallow = False)
         self.updateAvailable = changed
-        minqlx.CHAT_CHANNEL.reply("Test1: New update available.")
+        if self.updateAvailable:
+            minqlx.CHAT_CHANNEL.reply("test1: New update available.")
         return
     
     @minqlx.thread
@@ -46,6 +47,6 @@ class test1(minqlx.Plugin):
         os.system("mv " + self.plugindir + "/.temp/" + "test1.py" + " " + self.plugindir)
         os.system("rm -rf " + self.plugindir + "/.temp/")
         self.updateAvailable = False
-        minqlx.CHAT_CHANNEL.reply("Test1: Plugin has been successfully updated.")
+        minqlx.CHAT_CHANNEL.reply("test1: Plugin has been successfully updated.")
         minqlx.reload_plugin("test1")
         return
